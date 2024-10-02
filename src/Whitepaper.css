@@ -1,0 +1,34 @@
+.whitepaper {
+  margin: 0;
+  padding: 0;
+  
+}
+.whitepaper-content {
+  margin: 0;
+  padding: 0;
+}
+.whitepaper-content h1 {
+  padding-top: 100px;
+  margin: 0;
+  text-align: center;
+  color: white;
+}
+.whitepaper-content p {
+  width: 80%;
+  text-align: center;
+  margin: 10px auto;
+  color: #d4d4d4;
+}
+.whitepaper-content .section p {
+  width: 100%;
+  text-align: left;
+}
+.whitepaper-content .section h3 {
+  color: #48e4fa;
+}
+.whitepaper-content .section li {
+  color: #d4d4d4;
+}
+.whitepaper-content .section strong {
+  color: white;
+}

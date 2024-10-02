@@ -1,0 +1,65 @@
+.reset-password-container, .resend-verification-container {
+    width: 100%;
+    margin: 0;
+}
+
+form {
+            width: 70%;
+            margin: auto;
+            padding: 20px 30px;
+            padding-top: 10px;
+            background: rgba(215,237,255,0.122);
+            border-top: solid 5px #48e4fa;
+            border-bottom: solid 5px #48e4fa;
+            border-radius: 20px;
+}
+
+        input, .submit-button {
+            width: 100%;
+            padding: 0.8em;
+            margin: 0.5em 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background: #fff;
+            box-shadow: #68016600;
+        }
+.container {
+  margin: 0;
+  padding-top: 100px;
+}
+.container h1 {
+  color: white;
+  text-align: center;
+}
+.submit-button {
+            background: #48e4fa;
+            color: #041f4c;
+            border: none;
+            cursor: pointer;
+            box-shadow: #68016600;
+        }
+        .submit-button:hover {
+            background: #01aac2;
+        }
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+.message {
+  width: 80%;
+  margin: 20px auto;
+  background: rgba(244,244,244,0.515);
+  border: 1px solid #48e4fa;
+  padding: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+}
+.note {
+  text-align: left;
+  font-size: 12px;
+  width: 80%;
+  color: #c8c3c3;
+  margin: 10px auto;
+  margin-left: 20px;
+}
