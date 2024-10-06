@@ -1,32 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css'; // If necessary, import the shared CSS
 
 function MainContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [currentText, setCurrentText] = useState('');
+  // Use useMemo to memoize the texts array
+  const texts = useMemo(() => [
+    'Explore<br>The Future of<br>Cryptocurrency<span>?</span>',
+    'Earn Passive<br>Income Up To <br>$500 Daily<span>?</span>',
+    'Become A<br>Millionaire When<br>We List<span>?</span>'
+  ], []);
+
   useEffect(() => {
-    let texts = [
-      'Explore<br>The Future of<br>Cryptocurrency<span>?</span>',
-      'Earn Passive <br>Income Up To <br>$500 Daily<span>?</span>',
-      'Become a <br>Millionaire When<br>We List<span>?</span>'
-    ];
     let index = 0;
 
     function changeText() {
-      const mainText = document.getElementById('main-text');
-      if (mainText) {
-        mainText.innerHTML = `<span class="typing-animation">${texts[index]}</span>`;
-        index = (index + 1) % texts.length;
-      }
+      setCurrentText(texts[index]);
+      index = (index + 1) % texts.length;
     }
-
+    
     const intervalId = setInterval(changeText, 5000);
     changeText(); // Initial call to display the first text immediately
 
     return () => {
       clearInterval(intervalId); // Cleanup interval on component unmount
     };
-  }, []);
+  }, [texts]);
+
+  const gradientTextStyle = {
+    fontSize: '2.5em',
+    fontWeight: 'bold',
+    background: 'linear-gradient(to right, #ff7e5f, #feb47b)',
+    WebkitBackgroundClip: 'text',
+    color: 'transparent',
+  };
   
   // Function to open the modal
   const handleRegisterClick = () => {
@@ -37,21 +45,20 @@ function MainContent() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+  
 
   return (
     <div className="main-content">
       <div className="contents">
         <h2>Are you ready to</h2>
         <div id="poster">
-          <h3 id="main-text">
-            <span className="typing-animation">Explore<br/>The Future of<br/>Cryptocurrency<span>?</span></span>
-          </h3>
+          <h3 id="main-text" style={gradientTextStyle} dangerouslySetInnerHTML={{ __html: currentText }}></h3>
           <div className="image">
             <img src="transparent-logo2/9.png" alt="Explore the Future of Cryptocurrency" />
           </div>
         </div>
         {/* Replace the direct link with the modal trigger */}
-        <button onClick={handleRegisterClick} className="register-button">Start Mining</button>
+        <button style={{ marginTop: '80px'}} onClick={handleRegisterClick} className="register-button">Start Mining</button>
       </div>
 
       <div className="section" id="faster">
@@ -71,19 +78,28 @@ function MainContent() {
       <section className="explanation-section">
         <h3 style={{ width: '80%', textAlign: 'center'}}>How is Softcoin Different From Other Crypto Airdrop Projects?</h3>
         <div className="keypoint">
-            <span class="material-symbols-outlined">edit_road</span>
+            <span class="iconss"><i className="fa-solid fa-road"></i></span>
+        
+         <div className="keypoints">
             <h3>Clear & Precise Roadmap</h3>
             <p>We lauched this project with a vivid and completly feasible Roadmap, to avoid any uncertainty that will lead to the dissapointment of the community.</p>
+            </div>
         </div>
         <div className="keypoint">
-            <span className="material-symbols-outlined">support_agent</span>
-            <h3>Reliable User Support</h3>
+            <span className="iconss"><i className="fa-solid fa-headset"></i></span>
+        
+         <div className="keypoints">
+           <h3>Reliable User Support</h3>
             <p>Our Team is ever ready to provide assistance with any challenges you might encounter.</p>
+            </div>
         </div>
         <div className="keypoint">
-            <span className="material-symbols-outlined">thumb_up</span>
+            <span className="iconss"><i class="fa-solid fa-thumbs-up"></i></span>
+         
+         <div className="keypoints">
             <h3>Easy To Use</h3>
             <p>The process of Mining and Earning on Softcoin is specifically made to be easy and user friendly.</p>
+        </div>
         </div>
     </section>
             <section className="explanation-section">
@@ -100,7 +116,7 @@ function MainContent() {
   </div>
         </section>
     <div className="just">
-        <h3 style={{ textAlign: 'center', color: 'white'}}>Want More? Here is more!</h3>
+        <h3 style={{ textAlign: 'center', color: '#feb47b'}}>Want More? Here is more!</h3>
       <div className="section">
 
             <img src="okay/everyday.png" alt="Benefits of Softcoin"/>
@@ -122,7 +138,7 @@ function MainContent() {
         </div>
 
         <div className="norm">
-           <p>Read extensively about the core value, mission statement and technical overview of the project in our <a style={{ color: '#48e4fa'}} href="/whitepaper">Whitepaper</a>.</p>
+           <p>Read extensively about the core value, mission statement and technical overview of the project in our <a style={{ textDecoration: 'none', color: '#feb47b'}} href="/whitepaper">Whitepaper</a>.</p>
             <p>Join us today and let us embark on this journey to re-invent the cryptocurrency industry ​through innovations and creativity together.</p>
             {/* Replace the direct link with the modal trigger */}
         <button onClick={handleRegisterClick} className="register-button">Start Mining</button>
@@ -134,8 +150,8 @@ function MainContent() {
             <h3>Select Platform</h3>
             <button onClick={closeModal} className="close-modal"><i className="fas fa-close"></i></button>
             <div className="modal-buttons">
-              <a href="https://app.softcoin.world" className="modal-button">WEB APP</a>
-              <a href="https://t.me/SoftcoinAppBot?start" className="modal-button">TELEGRAM MINI APP</a>
+              <a href="https://app.softcoin.world" className="modal-button"><i className="fa-solid fa-globe"></i> WEB APP</a>
+              <a href="https://t.me/SoftcoinAppBot?start" className="modal-button">TELEGRAM MINI APP <i className="fa-brands fa-telegram"></i></a>
             </div>
           </div>
         </div>
